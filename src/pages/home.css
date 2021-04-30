@@ -1,0 +1,18 @@
+.table--home {
+  width: 70%;
+  margin: 50px auto;
+}
+
+.expense-input__container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.expense-input__item {
+  width: 100%;
+}
+
+.expense-input__item + .expense-input__item {
+  width: 30%;
+  margin-left: 10px;
+}

@@ -1,0 +1,7 @@
+.expense_td:after {
+  content: ', '
+}
+
+.expense_td:last-child:after {
+  content: none;
+}

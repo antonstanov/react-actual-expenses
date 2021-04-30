@@ -1,21 +1,27 @@
 import Table from "antd/lib/table/Table";
 import React from "react";
-import {IHomeColumns, IHomeDataSource} from "../interfaces/IDataSource.interface";
+import {IExpenseData, IHomeColumns, IHomeDataSource} from "../interfaces/IDataSource.interface";
 import {ExpenseComponent} from "../components/expense";
-import {message} from "antd";
+import './home.css';
 
 const dataSource: IHomeDataSource[] = [
   {
     key: '1',
     date: '01.01.2021',
-    expenses: 'еда 2000, авто(бензин) 5000',
-    sum: 7000,
+    expenses: [
+      {text: 'eat', sum: 3000},
+      {text: 'auto', sum: 30000}
+    ],
+    sum: 33000,
   },
   {
     key: '2',
-    date: '02.02.2021',
-    expenses: 'еда 3000, авто(мойка) 1000',
-    sum: 4000,
+    date: '02.02.2022',
+    expenses: [
+      {text: 'eat', sum: 44000},
+      {text: 'auto', sum: 550000}
+    ],
+    sum: 594000,
   },
 ];
 
@@ -29,17 +35,17 @@ const columns: IHomeColumns[] = [
     title: 'Expenses',
     key: 'expenses',
     dataIndex: 'expenses',
-    render: (text: string) => <ExpenseComponent text={text}/>,
+    render: (data: IExpenseData[]) => <ExpenseComponent data={data}/>
   },
   {
     title: 'Sum',
-    dataIndex: 'sum',
     key: 'sum',
-  },
+    dataIndex: 'sum'
+  }
 ];
 
 export class HomePage extends React.Component {
   render() {
-    return <Table dataSource={dataSource} columns={columns}/>;
+    return <Table className="table--home" dataSource={dataSource} columns={columns}/>;
   }
 }
