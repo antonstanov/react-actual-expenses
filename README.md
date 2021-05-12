@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Tasks
 
 FRONT-1: Добавить поповер для ячейки в таблице
+FRONT-2: Добавление стейта

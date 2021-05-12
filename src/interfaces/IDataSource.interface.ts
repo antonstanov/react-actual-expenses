@@ -12,7 +12,24 @@ export interface IHomeColumns {
   render?: any
 }
 
-export interface IExpenseData {
-  text: string,
-  sum: number;
+
+export interface IExpenseInput {
+  key: string,
+  text?: string,
+  sum?: number
+}
+
+export interface IExpense extends IExpenseInput{
+  parentKey: string,
+  data: IExpenseInput[]
+}
+
+export interface IState {
+  dataSource: IHomeDataSource[]
+}
+
+export interface IExpenseInputData {
+  key: string,
+  inputName: 'sum' | 'text'
+  value?: string
 }
