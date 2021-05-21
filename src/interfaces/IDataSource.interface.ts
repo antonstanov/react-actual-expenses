@@ -25,7 +25,7 @@ export interface IExpense extends IExpenseInput{
 }
 
 export interface IState {
-  dataSource: IHomeDataSource[]
+  homePageData: IHomeDataSource[]
 }
 
 export interface IExpenseInputData {
