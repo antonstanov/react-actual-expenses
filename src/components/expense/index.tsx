@@ -85,7 +85,10 @@ export class ExpenseComponent extends React.Component<{ expenseData: IExpense, o
       if (index > -1) this.expenseInputValues[index] = input?.value;
     })
 
-    this.props.onChange(this.props.expenseData.parentKey, {key, inputName, value: e.target.value})
+    this.props.onChange(
+      this.props.expenseData.parentKey,
+      {key, inputName, value: inputName === 'sum' ? Number(e.target.value) : e.target.value}
+    )
 
     this.needNewExpense = this.expenseInputValues?.some((input: string) => input === '')
 

@@ -3,6 +3,14 @@
   margin: 50px auto;
 }
 
+.table--home .ant-table table .coll{
+  width: 10%;
+}
+
+.table--home .ant-table table .coll--expenses{
+  width: 80%;
+}
+
 .expense-input__container {
   display: flex;
   margin-bottom: 10px;

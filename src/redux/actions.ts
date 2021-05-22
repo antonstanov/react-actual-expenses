@@ -1,22 +1,34 @@
-import {CHANGE_DAY_EXPENSE, CREATE_DAY_EXPENSE, CREATE_EXPENSE} from "./types";
+import {
+  CREATE_DAY_EXPENSE,
+  CHANGE_DAY_EXPENSE,
+  CREATE_EXPENSE,
+  CHANGE_EXPENSE,
+} from "./types";
 
-export function createDayExpense(dayExpense: any) {
+export function createDayExpenseAction(dayExpense: any) {
   return {
     type: CREATE_DAY_EXPENSE,
     payload: dayExpense
   }
 }
 
-export function createExpense(expense: any) {
+export function changeDayExpenseAction(expense: any) {
+  return {
+    type: CHANGE_DAY_EXPENSE,
+    payload: expense
+  }
+}
+
+export function createExpenseAction(expense: any) {
   return {
     type: CREATE_EXPENSE,
     payload: expense
   }
 }
 
-export function changeDayExpenseReducer(expense: any) {
+export function changeExpenseAction(expense: any) {
   return {
-    type: CHANGE_DAY_EXPENSE,
+    type: CHANGE_EXPENSE,
     payload: expense
   }
 }

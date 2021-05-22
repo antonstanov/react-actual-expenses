@@ -4,7 +4,12 @@ import {IExpense, IExpenseInputData, IHomeDataSource, IState} from "../interface
 
 import './home.css';
 import {connect} from "react-redux";
-import {changeDayExpenseReducer, createDayExpense, createExpense} from "../redux/actions";
+import {
+  changeDayExpenseAction,
+  changeExpenseAction,
+  createDayExpenseAction,
+  createExpenseAction
+} from "../redux/actions";
 import {ExpenseComponent} from "../components/expense";
 
 interface HomePageProps {
@@ -18,7 +23,8 @@ interface HomePageProps {
    */
   createDayExpense: any;
   createExpense: any;
-  changeDayExpenseReducer: any
+  changeDayExpense: any;
+  changeDayExpenseSum: any;
 }
 
 class HomePage extends React.Component<HomePageProps> {
@@ -32,11 +38,13 @@ class HomePage extends React.Component<HomePageProps> {
         title: 'Date',
         dataIndex: 'date',
         key: 'date',
+        className: 'coll coll--date'
       },
       {
         title: 'Expenses',
         key: 'expenses',
         dataIndex: 'expenses',
+        className: 'coll coll--expenses',
         render: (data: IExpense) =>
           <ExpenseComponent
             expenseData={data}
@@ -47,7 +55,8 @@ class HomePage extends React.Component<HomePageProps> {
       {
         title: 'Sum',
         key: 'sum',
-        dataIndex: 'sum'
+        dataIndex: 'sum',
+        className: 'coll coll--sum'
       }
     ];
   }
@@ -59,7 +68,7 @@ class HomePage extends React.Component<HomePageProps> {
    * @private
    */
   private expenseComponentChange(parentKey: string, expenseInputData: IExpenseInputData): void {
-    this.props.changeDayExpenseReducer({
+    this.props.changeDayExpense({
       parentKey,
       expenseInputData
     })
@@ -73,7 +82,14 @@ class HomePage extends React.Component<HomePageProps> {
   }
 
   render() {
-    return <Table className="table--home" dataSource={this.props.homePageData} columns={this.columns}/>;
+    return <Table
+      className="table--home"
+      dataSource={this.props.homePageData}
+      size={'small'}
+      pagination={false}
+      rowClassName={'row row--expense'}
+      columns={this.columns}
+    />;
   }
 }
 
@@ -84,9 +100,10 @@ const mapStateToProps = (state: IState, ownProps: any) => {
 }
 
 const mapDispatchToProps = {
-  createExpense,
-  createDayExpense,
-  changeDayExpenseReducer
+  createDayExpense: createDayExpenseAction,
+  changeDayExpense: changeDayExpenseAction,
+  createExpense: createExpenseAction,
+  changeExpense: changeExpenseAction,
 }
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps)
